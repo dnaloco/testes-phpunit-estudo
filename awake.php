@@ -1,7 +1,7 @@
 <?php 
 // só fiz essa besteirinha pois vi num wallpaper que tinha apenas 'while (awake()) {code();}'
 // ai resolvi implementar só por distração, pois já está mó tarde e estou super cansado.
-// vou ver uns episódios de samurai x e talvez assista Elysium...Good night and keep coding.
+// vou ver uns episódios de samurai x e talvez assista Elysium...Good night!
 $frase = 'eu continuo acordado e codando. Vou tomar um café para dar um gás, mas já volto...';
 /* Globais -> */ $arr = explode(' ', $frase); $count = 0; $val = ''; /* Para as duas funções */
 function awake()
