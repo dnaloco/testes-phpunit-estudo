@@ -1,0 +1,329 @@
+TESTES...
+
+TÉCNICAS DE TESTE DE SOFTWARE
+
+A atividade de teste de software é um elemento crítico da garantia de qualidade de software e representa a última revisão de especificação, projeto e codificação. Não é incomum que uma organização de software gaste 40% do esforço de projeto total em teste.Alguns casos dos quais dependam vidas humanas (por exemplo, controle de vôo), pode custar de 3 a 5 vezes mais que todos os outros passos de engenharia de software juntos.
+
+FUNDAMENTOS DE TESTE DE SOFTWARE
+
+A fase de teste gera bastante conflito entre os engenheiros de software. A atividade de teste tem a intenção de "demolir" o software que ele construiu.
+
+Os desenvolvedores de software são, por sua própria natureza construtivos, e para atividade de teste eles devem descartar noções de "corretitude" do software que eles acabaram de desenvolver, e devem superar conflitos de interesse que ocorrem quando erros são descobertos.
+
+OBJETIVOS DA ATIVIDADE DE TESTE
+
+A atividade de teste é o processo de executar um programa com a intenção de descobrir um erro.
+Um bom caso de teste é aquele que tem uma elevada probabilidade de revelar um erro ainda não descoberto.
+Um teste bem-sucedido é aquele que revela um erro ainda não descoberto.
+Se a atividade de teste for conduzida com sucesso ela descobrirá erros no software.
+Mas é importante saber que " A atividade de teste não pode mostrar a ausencia de bugs ; ela só pode mostrar se defeitos de software estão presentes". É importante ter essa declaração em mente quando a atividade de teste estiver sendo realizada.
+
+PROJETO DE CASOS DE TESTE
+
+Os projetos de casos de teste são construídos , para ajudar a garantir a integridade dos testes e proporcionar a mais alta probabilidade de revelar erros no software.
+
+Qualquer produto de engenharia pode ser tratado de duas maneiras:
+
+Conhecendo-se a função específica que um produto projetado deve executar, testes podem ser realizados para demonstrar que cada função é totalmente operacional;
+Conhecendo-se o funcionamento interno de um produto, testes podem ser realizados para garantir que "todas as engrenagem se encaixam", ou seja, que a operação interna do produto tem um desempenho de acordo com as especificações e que os componentes internos foram adequadamente postos à prova.
+Esses testes são chamados de teste da caixa preta e teste da caixa branca.
+TESTE DE CAIXA BRANCA
+
+O teste da caixa branca usa a estrutura de controle do projeto procedimental para derivar casos de teste. O engenheiro de software pode derivar os casos de teste que:
+
+garantam que todos os caminhos independentes dentro de um módulo tenham sido exercitados pelo menos uma vez;
+exercitem todas as decisões lógicas para valores falsos ou verdadeiros;
+executem todos os laços em suas fronteiras e dentro de seus limites operacionais;
+e exercitem as estruturas de dados internas para garantir a sua validade.
+TESTE DE CAMINHO BÁSICO
+
+É uma técnica de caixa branca , e possibilita que o projetista do caso de teste derive uma medida da complexidade lógica de um projeto procedimental e use essa medida como guia para definir um conjunto básico de caminhos de execução.
+
+TESTE DE ESTRUTURA DE CONTROLE
+
+Se divide em vários testes , dentre os quais merecem destaque:
+Teste de condição
+É um método que põe a prova as condições lógicas contidas num módulo de programa. Ele concentra-se em testar cada condição do programa.
+
+O propósito do teste de condição é detectar não somente erros nas condições de um programa, mas também outros erros no programa.
+
+O teste de ramos e teste de domínio são exemplos de estratégias de teste de condição.
+
+Teste de fluxo de dados
+O método de teste de fluxo de dados seleciona caminhos de teste de um programa de acordo com as localizações das definições e usos de variáveis no programa.
+
+As estratégias de fluxo de dados são úteis para selecionar caminhos de teste de um programa que contenha instruções de laços e if aninhadas.
+
+Teste de laços (LOOPS)
+Os laços são o fundamento para grande maioria de todos os algoritmos implementados no software. O teste de laços se concentra exclusivamente na validade das construções de laços. Quatro diferentes classes de laços podem ser definidas:
+
+Laços Simples
+Laços Aninhados
+Laços Concatenados
+Laços Não-estruturados
+TESTE DE CAIXA PRETA
+
+Os métodos de caixa preta concentram-se nos requisitos funcionais do software.O engenheiro de software pode derivar conjunto de condições de entrada que exercitem completamente todos os requisitos funcionais para um programa.
+
+O teste de caixa preta procura descobrir erros nas seguintes categorias:
+
+funções incorretas ou ausentes;
+erros de interfeace;
+erros nas estruturas de dados ou no acesso a banco de dados externos;
+erros de desempenho;
+e erros de inicialização e término.
+O teste de caixa preta tende a ser aplicado durante as últimas etapas da atividade de teste. Ele se concentra no domínio de informação. Testes são projetados para responder às seguintes perguntas:
+
+Como a validade funcional é testada ?
+Quais classes de entrada constituirão bons casos de teste ?
+O sistema é particularmente sensível a certos valores de entrada ?
+Como as fronteiras de uma classe de dados são isoladas ?
+Quais índices de dados e volumes de dados o sistema pode tolerar ?
+Que efeito terão combinações específicas de dados sobre a operação do sistema ?
+Alguns métodos de Caixa preta serão abordados agora :
+
+Particionamento de equivalência
+Divide o domínio de entrada de um programa em classe de dados a partir das quais os casos de teste podem ser derivados. O particionamento de equivalência procura definir um caso de teste que descubra classes de erros, assim reduzindo o número total de casos de teste que devem ser resolvidos.
+
+O projeto de casos de teste para o particionamento de equivalência baseia-se numa avaliação de classes de equivalência para uma condição de entrada. Uma classe de equivalência representa um conjunto de estados válidos ou inválidos para condições de entrada. As classes de equivalência podem ser definidas de acordo com as seguintes diretrizes:
+
+Se uma condição de entrada especificar um intervalo, uma classe de equivalência válida e duas classes de equivalência inválidas são definidas.
+Se uma condição de entrada exigir um valor específico, uma classe de equivalência válida e duas classes de equivalência inválidas são definidas.
+Se uma condição de entrada especificar um membro de um conjunto, uma classe de equivalência válida e uma classe de equivalência inválida são definidas.
+Se uma condição de entrada for booleana, uma classe válida e uma inválida sào definidas.
+Aplicando-se as diretrizes para derivação de classes de equivalências, os casos de testes para cada item de dados do domínio de entrada poderiam ser desenvolvidos e executados. Os casos de teste são selecionados de forma que o maior número de atributos de uma classe de equivalência seja exercitado de uma só vez.
+
+Análise de valor limite
+Um número maior de erros tende a ocorrer nas fronteiras do domínio de entrada do que no "centro". Por isso é que a análise do valor limite foi desenvolvida como uma técnica de teste. Os testes põem a prova os valores fronteiriços. Essa técnica complementa o particionamento de equivalência, e sob muitos aspectos as diretrizes se assemelham àquelas apresentadas para o particionamento de equivalência:
+
+Se uma condição de entrada especificar um intervalo, delimitado pelos valores a e b, os casos de teste devem ser projetados com valores a e b logo acima e logo abaixo de a e b, respectivamente.
+Se uma condição de entrada especificar uma série de valores os casos de teste que ponham à prova números máximos e mínimos devem ser desenvolvidos. Valores logo acima e logo abaixo do mínimo e do máximo também são testados.
+Aplique as diretrizes 1 e 2 às condições de saída. Por exemplo, suponhamos que uma tabela de temperatura versus pressão seja exigida como saída de um programa de análise de engenharia. Os casos de teste devem ser projetados para criar um relatório de saída que produza um número máximo (e mínimo) permissível de entradas na tabela.
+Se estruturas internas de dados do programa tiverem prescrito fronteiras , certifique-se de projetar um caso de teste para exercitar a estrutura de dados em sua fronteira.
+Técnicas de grafo de causa-efeito
+O grafo de causa-efeito, é uma técnica de projetos de caso de teste que oferece uma uma representação concisa das condições lógicas e das ações correspondentes. A técnica segue quatro passos:
+
+Causas (condições de entrada) e efeitos (ações) são relacionados para um módulo e um identificador é atribuído para cada um.
+Um grafo de causa efeito é desenvolvido.
+O grafo é convertido numa tabela de decisão.
+As regras da tabela de decisão são convertidas em casos de teste.
+Testes de comparação
+Usa-se quando a confiabilidade do software é absolutamente crítica. alguns pesquisadores tem sugerido que versões independentes de software sejam desenvolvidas para aplicações críticas , mesmo quando uma única versão for usada no sistema copmputadorizado entregue.Essas versões independentes formam a base de uma técnica de teste de caixa preta denominada teste de comparação ou teste back-to-back.
+
+O método de comparação não é infalível. Se a especificação a partir da qual todas as versões foram desenvolvidas estiver errada, provavelmente todas as versões refletirão o erro. Além disso, se cada uma das versões independentes produzir resultados idênticos, mas incorretos, os testes de condições deixarão de detectar o erro.
+
+Testes de sistemas de tempo real
+Métodos de projetos de caso de teste abrangente para sistemas de tempo real ainda precisam ser desenvolvidos. Porém uma estratégia global de qutro passos pode ser proposta:
+
+Teste de tarefas.
+O primeiro passo da atividade de testes de softwares de tempo real consiste em testar cada tarefa independentemente. Ou seja, testes de caixa preta e de caixa branca são projetados e executados para cada tarefa. Cada tarefa é executada independentemente durante esses testes. O teste de tarefas revela erros de lógica e de função, mas não revelará erros comportamentais ou de timing.
+Teste comportamental. 
+Usando modelos de sistemas criados com as ferramentas CASE, é possível simular o comportamento de um sistema de tempo real e examinar seu comportamento como uma consequência de eventos externos. Essas atividades de análise podem servir como a base para o projeto de casos de teste que será realizado quando o software de de tempo real for construído.
+Teste intertarefas.
+Assim que os erros em tarefas individuais e no comportamento de sistema tiverem sido isolados , a atividade de teste desvia-se para erros relacionados ao tempo. As tarefas assíncronas, que sabidamente comunicam-se entre sí , são testadas com diferentes taxas de dados e cargas de processamento para determinar se ocorrerão erros de sincronização intertarefas. além disso, as tarefas que se comunicam por intermédio de uma fila de mensagens são testadas para descobrir erros na determinação do tamanho dessas áreas de armazenagem de dados.
+Teste do sistema. 
+O software e o hardware são integrados e uma variedade completa de de testes de sistema é levada a efeito, numa tentativa de descobrir erros na interface software/hardware.
+FERRAMENTAS DE TESTE AUTOMATIZADAS
+
+Uma vez que o teste de software frequentemente é responsável por até 40% de todo o esforço despendido num projeto de desenvolvimento de software, as ferramentas que podem reduzir o tempo de teste são muito valiosas.Muitas ferramentas de teste foram desenvolvidas e elas podem ser divididas em uma série de categorias:
+
+Analisadores estáticos. Esses sistemas de análise de programa suportam a "comprovação" de afirmações estáticas - afirmações fracas sobre a estrutura e o formato de um programa.
+Auditores de código. Esses filtros de propósito especial são usados para verificar a qualidade do software, a fim de garantir que ele atenda aos padrões mínimos de codificação.
+Processadores de asserção. Esses sistemas pré-processadores/pós-processadores são empregados para dizer se as afirmações fornecidas pelo programador, denominadas asserções, sobre o comportamento de um programa são de fato cumpridas durante as execuções reais do programa.
+Geradores de arquivos de teste. Esses processadores geram, e preenchem com valores previamente determinados, arquivos de entrada típicos para programas que estão em teste.
+Geradores de dados de teste. Esses sistemas de análise automatizados auxiliam o usuário a selecionar dados de teste que fazem um programa comportar-se de uma forma particular.
+Verificadores de teste. Essas ferramentas medem a cobertura interna dos testes, frequentemente expressa em termos que estão relacionados à estrutua de controle do objeto de teste, e relatam o valor da cobertura ao especialista em garantia da qualidade.
+Bancadas de teste (Teste Harnesses). Essa classe de ferramentas apóia o processamento de testes , tornando-se quase indolor para :
+instalar um programa candidato num ambiente de teste;
+alimentá-lo com dados de entrada;
+Com uso de stubs o comportamento de módulos subsidiários (subordinados).
+Comparadores de saída. Esta ferramenta torna possível a comparação de um conjunto de saídas de um programa com outro conjunto (previamente arquivado) para determinar a diferença entre eles.
+Sistemas de execução simbólica. Essa ferramenta realiza testes de programas usando entrada algébrica, em vez de valores de dados numéricos. O software que é testado, parece desse modo testar classes de dados, em vez de ser um teste de caso específico. A saída é algébrica e pode ser comparada com os resultados esperados que são especificados algebricamente.
+Simuladores de ambiente. Essa ferramenta é um sistema computadorizado especializado que possibilita que o analista modele o ambiente externo do software de tempo real e depois simule dinamicamente as condições operacionais reais.
+Analisadores de fluxo de dados. Essa ferramenta rastreia o fluxo de dados mediante um sistema e tenta descobrir referências a dados, indexação incorreta e outros erros relacionados a dados.
+O uso atual não definido de ferramentas automatizadas para teste vem crescendo, e é provavel que a aplicação se acelere durante a próxima década. Provavelmente, as descendentes das ferramentas de teste da primeira geração provocarão mudanças radicais na maneira como testamos softwares e , então, melhorarão a confiabilidade dos sistemas baseados em computador.
+
+
+RESUMO
+
+O objetivo principal do projeto de casos de teste é derivar um conjunto de teste que tenham alta probabilidade de revelar defeitos no software. Para atingir esse objetivo, duas categorias diferentes de técnicas de projeto de caso de teste são usadas: O teste de caixa preta e o teste de caixa branca.
+
+Os teste de caixa branca focalizam a estrutura de controle do programa. Os casos de teste são derivados para garantir que todas as instruções do programa tenham sido exercitadas pelo menos uma vez durante os testes e que todas as condições lógicas tenham sido exercitadas. Os testes de caminho básico , uma técnica de caixa branca, faz uso de grafos de programa para derivar o conjunto de testes linearmente independentes que garantirá cobertura. Os testes de fluxo de dados e das condições põem à prova lógica do programa, e os testes de laços complementam outras técnicas de caixa branca ao proporcionar um procedimento para exercitar laços de vários graus de complexidade.
+
+Os teste de caixa branca são "testes em pequeno porte" (testing in the small). A implicação dessa colocaçxão é que os teste de caixa branca são tipicamente aplicados a componentes de programas pequenos (Os módulos). Os testes de caixa preta, por outro lado, ampliam o nosso foco e poderiam ser denominados "testes em grande porte" (testing in the large ).
+
+Os testes de caixa preta são projetados para validar os requisitos funcionais, sem se preocupar com o funcionamento interno de um programa. As técnicas de teste de caixa preta concentram-se no domínio de informações do software, derivando os casos de teste ao dividir a entrada e a saída de uma maneira que proporcione uma satisfatória cobertura de teste. O particionamento de equivalência divide o domínio de entrada em classes de dados que provavelmente exercitarão uma função de software específica. A análise do valor de fronteira prova a capacidade que um programa tem de manipular dados nos limites da aceitabilidade. o grafo de causa-efeito é uma técnica que possibilita que o analista valide conjuntos complexos de ações e condições.
+
+Os projetistas de softwares experientes frequentemente dizem: " a atividade de teste nunca termina; ela é apenas transferida do projetista para o seu cliente. toda vez que o seu cliente usa o programa, um teste é realizado". Ao aplicar o projeto de casos de teste, o engenheiro de software pode realizar testes mais completos e, portanto, descobrir e corrigir o maior número de erros possíveis antes que os "testes do cliente" se iniciem.
+
+Fudamentos da engenharia de software
+
+-------------------------------------------------------------------------------------------
+
+Técnicas de Teste de Software e Estratégias de Teste
+
+A atividade de teste de software é um elemento crítico da garantia de qualidade de software e representa a última revisão de especificação, projeto e codificação.
+■ Objetivos da Atividade de Teste
+A atividade de teste é o processo de executar um programa com a intenção de descobrir um erro.
+Um bom caso de teste é aquele que tem uma elevada probabilidade de revelar um erro ainda não descoberto.
+Um teste bem sucedido é aquele que revela um erro ainda não descoberto.
+■ Teste de Caminho Básico
+O método de caminho básico possibilita que o projetista do caso de teste derive uma medida da complexidade lógica de um projeto procedimental e use essa medida como guia para definir um conjunto básico de caminhos de execução.
+■ Teste de Estrutura de Controle
+Estes testes ampliam a cobertura dos testes e melhoram a qualidade dos testes.
+Teste de condição: Põem em prova as condições lógicas contidas num módulo de programa. Uma condição simples é uma variável booleana ou uma expressão relacional, possivelmente precedida por um operador NOT ( ' ) . Uma expressão relacional assume a forma E1E2. Uma condição composta é constituída de duas ou mais condições simples, operadores booleanos e parênteses, OR ( | ). AND ( & ) e NOT ( ' ). Uma condição sem expressões relacionais é chamada expressão booleana.
+O método de teste de condição concentra-se em testar cada condição do programa.
+Teste de Fluxo de Dados: Seleciona caminhos de teste de um programa de acordo com as localizações das definições e usos de variáveis no programa.
+Teste de Laços: Se concentram exclusivamente na validade das construções de laços, laços simples, aninhados, concatenados, não-estruturados.
+■ Particionamento de Equivalência
+Este método divide o domínio de entrada de um programa em classes de dados a partir das quais os casos de teste podem ser derivados. O particionamento de equivalência procura definir um caso de teste que descubra classes de erros, assim reduzindo o número total de casos de teste que devem ser desenvolvidos. Uma classe de equivalência representa um conjunto de estados válidos para condições de entrada.
+■ Análise de Valor Limite BVA
+A análise de valor limite leva à escolha de casos de teste que põem à prova os valores fronteiriços. A análise de valor limita é uma técnica de projeto de casos de teste que complementa o particionamento de equivalência. Em vez de selecionar qualquer elemento de uma classe de equivalência, a BVA leva à seleção de casos de testes nas extremidades da classe. Em vez de se concentrar somente nas condições de entrada, a BVA deriva os casos de teste também do domínio de saída.
+■ Teste de Sistemas de Tempo Real
+Neste tipo de deste, encontramos o elemento de combinação alinhado ao teste que é o tempo. Os testes de software devem levar em consideração o impacto das falhas de hardware sobre o processamento do software. Tais falhas podem ser extremamente difíceis de ser simuladas realisticamente.
+■ Estratégia global para sistemas de tempo real:
+Teste de tarefas: O primeiro passo da atividade de testes de tempo real consiste em testar cada tarefa independentemente. Este teste revela erros de lógica e de função, mas não revelará erros comportamentais ou de timing.
+Teste comportamental: É possível simular o comportamento de um sistema de tempo real e examinar seu comportamento como uma conseqüência de eventos externos. O comportamento do software é examinado a fim de detectar erros de comportamento.
+Teste intertarefas: As tarefas assíncronas, que sabidamente comunica-se entre si, são testadas com diferentes taxas de dados e cartas de processamento para determinar se ocorrerão erros de sincronização intertarefas.
+Teste do sistema: O software e o software são integrados e uma variedade completa de testes de sistema é levada a efeito, numa tentativa de descobrir erros na interface software/hardware.
+■ ESTRATÉGIAS DE TESTE DE SOFTWARE
+Um esqueleto (template) de teste de software deve ser definido para o processo de engenharia do software. Esqueleto é um conjunto de passos no qual podemos alocar técnicas de projeto de casos de teste e métodos de teste específico.
+Uma estratégia de teste de software deve acomodar teste de baixo nível que seja necessário para verificar se um segmento de código-fonte foi corretamente implementado, bem como teste de alto nível que valide funções importantes do sistema contra requisitos do cliente.
+■ Verificação e Validação
+A verificação refere-se ao conjunto de atividades que garante que o software implemente corretamente uma função específica. A validação refere-se a um conjunto diferente de atividades que garante que o software que foi construído é rastreável às exigências do cliente.
+Os métodos de análise, projeto e implementação (codificação) atuam no sentido de aumentar a qualidade ao oferecer técnicas uniformes e resultados previsíveis.
+A análise e o projeto de software (juntamente com a codificação) são tarefas construtivas, ou seja, o engenheiro de software cria um programa de computador, sua documentação e estruturas de dados correlatas. Do ponto de vista do construtor, a atividade de teste pode ser destrutiva, pois sempre vão ser descobertos erros no programa.
+■ Uma Estratégia de Teste de Software
+Teste unitário, este teste concentra-se em cada unidade de software de acordo com a implementação do código-fonte, ele exercita caminhos específicos da estrutura de controle de um módulo, a fim de garantir uma completa cobertura e máxima detecção de erros.
+Teste de integração, a atenção encontra-se no projeto e na construção da arquitetura de software, este teste cuida das questões associadas aos duplos problemas da verificação e construção em programas.
+Teste de validação, os requisitos estabelecidos como parte da análise de requisitos de software são validados em relação ao software que foi construído, o teste de validação oferece a garantia final de que o software atende a todas as exigências funcionais, comportamentais e de desempenho.
+Teste de sistema, neste teste o software e outros elementos do sistema são testados como um todo, ele verifica se todos os elementos combinam-se adequadamente e se a função/desempenho global do sistema é conseguida.
+■ Critérios para a Conclusão de Teste
+A atividade de teste jamais terá completado a carga simplesmente transfere-se de você (o projetista) para o cliente.
+■ Teste de Unidade
+O teste de unidade concentra-se no esforço de verificação da menor unidade de projeto de software - o módulo. Caminhos de controle importantes são testados para descobrirem erros dentro das fronteiras do módulo.
+A interface com o módulo é testada para ter a garantia de que as informações fluem para dentro e para fora da unidade de programa que se encontra sob teste. A estrutura de dados local é examinada para ter a garantia de que os dados armazenados temporariamente mantêm sua integridade durante todos os passos de execução de um algoritmo. As condições de limite são testadas para ter a garantia de que o módulo opera adequadamente nos limites estabelecidos para demarcarem ou restringirem o processamento.
+■ Entre os erros mais comuns de computação estão:
+precedência aritmética incorreta ou mal compreendida;
+operações em modo misto;
+inicialização incorreta;
+■ Os casos de teste devem descobrir erros tais como:
+comparação de diferentes tipos de dados;
+operadores lógicos ou precedência incorretos;
+término do laço impróprio ou inexistente;
+■ Teste de Integração
+Este teste é uma técnica sistemática para a construção da estrutura de programa realizando-se, ao mesmo tempo, testes para descobrir erros associados a interfaces. O objetivo é, a partir dos módulos testados no nível de unidade, construir a estrutura de programa que foi determinada pelo projeto.
+Freqüentemente, existe uma tendência para tentar a integração não-incremental; ou seja, construir o programa usando uma abordagem "big bang" onde todos os módulos são combinados antecipadamente. O programa completo é testado como um todo.
+A integração incremental é a antítese do big bang. O programa é construído e testado em pequenos segmentos, onde os erros são mais fáceis de ser isolados e corrigidos; as interfaces têm maior probabilidade de ser testadas completamente; e uma abordagem sistemática ao teste pode ser aplicada.
+Integração Top-Down: é uma abordagem incremental à construção das estruturas de programa. Os módulos são integrados movimentando-se de cima para baixo através da hierarquia de controle, iniciando-se do módulo de controle principal (programa inicial). Os módulos subordinados ao módulo de controle principal são incorporados à estrutura de uma maneira depht-first (primeiramente pela profundidade) ou breadth-first (primeiramente pela largura).
+Integração Bottom-Up: inicia a construção e os testes com módulos atômicos (isto é, módulos localizados nos níveis mais baixos da estrutura de programa). Uma vez que os módulos são integrados de baixo para cima, o processamento exigido para os módulos subordinados em determinado nível está sempre disponível, e a necessidade de stubs é eliminada.
+A maior desvantagem da abordagem top-down é a necessidade de ter stubs e as dificuldades de teste resultantes que podem ser compensados pela vantagem de testar logo as principais funções de controle. A maior desvantagem da integração bootom-up é que o programa não existe como entidade até que o último módulo seja adicionado.
+■ Os critérios que estão citados a seguir são aplicados a todas as fases de testes:
+Integridade de interface: As interfaces internas e externas são testadas à medida que cada módulo é incorporado à estrutura.
+Validade funcional: Testes projetados para a descoberta de erros funcionais são aplicados.
+Conteúdo de informação: Testes projetados para a descoberta de erros associados às estruturas de dados globais e locais são aplicados.
+Desempenho: Testes projetados para a verificação dos limites de desempenho estabelecidos durante o projeto de software são aplicados.
+■ Teste de Sistema
+O teste de sistema é na verdade, uma série de diferentes testes, cujo propósito primordial é por completamente à prova o sistema baseado em computador. Não obstante cada teste tenha uma finalidade diferente, todo o trabalho deve verificar se todos os elementos do sistema foram adequadamente integrados e realizam as funções atribuídas.
+■ Teste de Recuperação
+O teste de recuperação é um teste de sistema que força o software a falhar de diversas maneiras e verifica se a recuperação é adequadamente executada.
+■ Teste de Segurança
+Este teste tenta verificar se todos os mecanismos de proteção embutidos num sistema o protegerão, de acessos indevidos.
+Durante o teste de segurança, o analista desempenha papéis de pessoas que desejam penetrar no sistema, qualquer coisa vale, tentando desarmar o sistema, e derrubar as defesas que tenham sido construídas.
+■ Teste de Desempenho
+É idealizado para testar o desempenho de run-time do software dentro do contexto de um sistema integrado. O teste de desempenho ocorre ao longo de todos os passos do processo de teste.
+Estudo Teórico e Aplicado de Critérios de Teste e Validação na Produção de Software
+Consiste em estudo teórico e empírico, definição e comparação de critérios de teste e implementação de ferramentas de software de apoio às atividades de teste na produção de software. Atividades de comparação entre critérios de teste funcional, estrutural, com ênfase em critérios baseados em análise de fluxo de dados, e em critérios baseados em erros, com ênfase na Análise de Mutantes, também são conduzidos dentro do escopo desta linha. Todos esses aspectos são explorados tanto no nível de teste de unidade como no teste de integração, assim como à luz do paradigma de desenvolvimento de software orientado a objeto. 
+
+---------------------------------------------------------------------
+
+CERTIFICADO
+
+Exam Information
+PHP Basics  Functions   Data Format & Types
+Syntax
+Operators
+Variables
+Control Structures
+Language Constructs and Functions
+Namespaces *
+Extensions
+Config
+Performance/bytecode caching *
+Arguments
+Variables
+References
+Returns
+Variable Scope
+Anonymous Functions, closures *
+XML Basics
+SimpleXML
+XML Extension
+Webservices Basics
+SOAP
+JSON *
+DateTime *
+DOMDocument
+Web Features    Object Oriented Programming Security
+Sessions
+Forms
+GET and POST data
+Cookies
+HTTP Headers
+HTTP Authentication
+HTTP Status Codes *
+
+I/O
+Files
+Reading
+Writing
+File System Functions
+Streams
+Contexts
+Instantiation
+Modifiers/Inheritance
+Interfaces
+Exceptions
+Autoload
+Reflection
+Type Hinting
+Class Constants
+Late Static Binding
+Magic (_*) Methods
+Instance Methods & Properties
+SPL
+Traits *
+Configuration
+Session Security
+Cross-Site Scripting
+Cross-Site Request Forgeries
+SQL Injection
+Remote Code Injection
+Email Injection
+Filter Input
+Escape Output
+Encryption, Hashing algorithms
+File uploads
+PHP Configuration
+Password hashing API *
+Strings & Patterns  Databases & SQL
+Arrays
+Quoting
+Matching
+Extracting
+Searching
+Replacing
+Formatting
+PCRE
+NOWDOC
+Encodings
+SQL
+Joins
+Prepared Statements
+Transactions
+PDO
+Associative Arrays
+Array Iteration
+Array Functions
+SPL, Objects as arrays *
+Casting

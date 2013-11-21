@@ -1,0 +1,52 @@
+<?php 
+$dir1 = new DirectoryIterator(getcwd());
+define('DS', DIRECTORY_SEPARATOR);
+
+// dois níveis
+foreach($dir1 as $file1) {
+    // PRIMEIRO NÍVEL
+    echo "Diretorio: ", $dir1->getPathname(), "\n";
+    if($file1->isFile() && $file1 != 'teste.php') {
+        renameForTest($file1);
+    } else if($file1->isDir() && !$file1->isDot()) {
+        // SEGUNDO NÍVEL
+        $dir2 = new DirectoryIterator($file1->getPathname());
+        echo "Diretorio: ", $dir2->getPathname(), "\n";
+        foreach($dir2 as $file2) {
+            if($file2->isFile()) {
+                echo "modificando ", $file2->getFilename(), "\n";
+                renameForTest($file2);
+            }  else if($file2->isDir() && !$file2->isDot()) {
+                // TERCEIRO NÍVEL
+                $dir3 = new DirectoryIterator($file2->getPathname());
+                echo "Diretorio: ", $dir3->getPathname(), "\n";
+                foreach($dir3 as $file3) {
+                    if($file3->isFile()) {
+                        echo "modificando ", $file3->getFilename(), "\n";
+                        renameForTest($file3);
+                    } else if($file3->isDir() && !$file3->isDot()) {
+                        // QUARTO NÍVEL
+                        $dir4 = new DirectoryIterator($file3->getPathname());
+                        echo "Diretorio: ", $dir4->getPathname(), "\n";
+                        foreach($dir4 as $file4) {
+                            if($file4->isFile()) {
+                                echo "modificando ", $file4->getFilename(), "\n";
+                                renameForTest($file4);
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
+
+function renameForTest($file)
+{
+    if(!strstr($file, 'Test')) {
+        $dir = dirname($file->getPathname()) . DS;
+        $oldName = substr($file, 0, strrpos($file, '.'));
+        $newName =  $oldName . 'Test.php';
+        rename($dir . $file, $dir . $newName);
+    }
+}
