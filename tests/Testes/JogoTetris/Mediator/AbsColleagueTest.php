@@ -39,7 +39,7 @@ class AbsColleagueTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testIfNotifyIsAbstractAndProtected
      */
-    public function testIfNotifyHasTwoRequiredArgumentsOneOfThemIsAnArrayAndTheOtherIsAInstanceOfItself()
+    public function testIfNotifyHasTwoRequiredArgumentsOneOfThemIsAnArrayAndTheOtherIsAnInstanceOfItself()
     {
         $method = $this->setRMethod('notify');
         $this->assertEquals(2, $method->getNumberOfRequiredParameters());
@@ -62,5 +62,4 @@ class AbsColleagueTest extends \PHPUnit_Framework_TestCase
         $param = $this->setRParam('update', 'data');
         $this->assertTrue($param->isArray());
     }
-
 }
