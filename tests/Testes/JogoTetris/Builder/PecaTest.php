@@ -18,7 +18,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('Testes\JogoTetris\Interfaces\iPeca', $interfaces);
     }
 
-    public function testIfClassABunchOfStaticAttributes()
+    public function testIfClassHasABunchOfStaticAttributes()
     {
         $this->assertClassHasStaticAttribute('imagem', $this->rClass->getName());
         $this->assertClassHasStaticAttribute('coords', $this->rClass->getName());
@@ -27,7 +27,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      * @expectedException InvalidArgumentException   
      */
     public function testIfWhenITryToConstructAPecaWithAWrongImageItTrowsAnInvalidArgumentException()
@@ -36,7 +36,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      */
     public function testIfWhenPassAExistingFileImageItConstructCorrectly()
     {
@@ -45,7 +45,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      */
     public function testIfIGetAnArrayWithInfoOfImagemAndCoords()
     {
@@ -59,7 +59,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      */
     public function testIfWhenISetSomeCoordsIGetTheRightValueOfThen()
     {
@@ -72,7 +72,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      */
     public function testFlowOfPeca()
     {
@@ -135,7 +135,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfStaticAttributes
      */
     public function img_ptX_ptY_rotate_speed($imgArr, $x, $y, $r, $s)
     {
