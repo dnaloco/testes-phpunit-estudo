@@ -11,4 +11,15 @@ class JogoTest extends \PHPUnit_Framework_TestCase
     {
         $this->setRClass();
     }
+
+    public function testIfHaveImplementedTheInterfaces()
+    {
+        $interfaces = $this->rClass->getInterfaces();
+        $this->assertArrayHasKey('Testes\JogoTetris\Interfaces\iJogo', $interfaces);
+    }
+
+    public function testIfHaveExtendsAbsMediator()
+    {
+        $this->assertTrue($this->rClass->isSubclassOf('Testes\JogoTetris\Mediator\AbsMediator'));
+    }
 }

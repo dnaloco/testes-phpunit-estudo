@@ -2,6 +2,7 @@
 namespace Testes\JogoTetris\MainClasses;
 
 use Testes\JogoTetris\Mediator\AbsColleague,
+    Testes\JogoTetris\Mediator\AbsMediator,
     Testes\JogoTetris\Interfaces\iJogador,
     Testes\JogoTetris\Interfaces\eCommands;
 
@@ -49,7 +50,7 @@ final class Jogador extends AbsColleague implements iJogador
             case 'change':
                 $data['action'] = eCommands::CHANGE;
                 $data['msg'] = array(); // ... TO IMPLEMENTS
-                foreach($command['change'] $k=>$v) {
+                foreach($command['change'] as $k=>$v) {
                     array_push($data['msg'], array($k => $v));
                 }
                 $this->notify($data);
@@ -59,6 +60,8 @@ final class Jogador extends AbsColleague implements iJogador
 
     public function setScore($score)
     {
+        if(!is_int($score))
+            throw new \InvalidArgumentException('Score must be an integer');
         $this->score = $score;
     }
 
@@ -69,7 +72,7 @@ final class Jogador extends AbsColleague implements iJogador
 
     public function setNome($nome)
     {
-        $this->nome = $nome;
+        $this->nome = empty(trim($nome))?'Jogador':$nome;
     }
 
     public function getNome()

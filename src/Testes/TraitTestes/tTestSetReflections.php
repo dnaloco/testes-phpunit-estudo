@@ -34,4 +34,9 @@ trait tTestSetReflections
     {
         return new \ReflectionParameter(array($this->rClass->getName(), $method), $param);
     }
+
+    public function setRProp($prop)
+    {
+        return new \ReflectionProperty($this->rClass->getName(), $prop);
+    }
 }

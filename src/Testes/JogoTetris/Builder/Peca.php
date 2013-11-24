@@ -34,9 +34,9 @@ final class Peca implements iPeca
     
     public function resetPeca()
     {
-        $this->coords->resetCoords();
-        $this->rotate = 0;
-        $this->speed = -1;
+        self::$coords->resetCoords();
+        self::$rotate = 0;
+        self::$speed = -1;
     }
 
     // quando o jogador apertar a seta 

@@ -1,10 +1,13 @@
 <?php
 namespace Testes\JogoTetris\MainClasses;
 
+use Testes\JogoTetris\Mediator\AbsColleague,
+    Testes\JogoTetris\Mediator\AbsMediator,
+    Testes\JogoTetris\Builder\Peca;
 /*
 Esta classe usa o padrão Flyweight.
  */
-final class PecaFactory
+final class PecaFactory extends AbsColleague
 {
     private static $id = parent::ID_PECA;
 
@@ -25,7 +28,7 @@ final class PecaFactory
             'd.png',
             'e.png',
             'f.png',
-            'g.png',
+            'g.png'
         );
 
         foreach($images as $img) {
