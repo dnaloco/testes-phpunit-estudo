@@ -10,11 +10,6 @@ final class Tela extends AbsColleague implements iTela
     {
         parent::__construct($mediator);   
     }
-    
-    protected function notify(Array $data, AbsColleague $self)
-    {
-
-    }
 
     protected function update(Array $data)
     {

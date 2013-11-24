@@ -7,9 +7,8 @@ class PecaFactoryTest extends \PHPUnit_Framework_TestCase
 
     private $rClass;
 
-    public function __construct()
+    public function setUp()
     {
-        parent::__construct();
         $this->setRClass();
     }
 }

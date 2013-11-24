@@ -7,9 +7,21 @@ class JogadorTest extends \PHPUnit_Framework_TestCase
 
     private $rClass;
 
-    public function __construct()
+    public function setUp()
     {
-        parent::__construct();
         $this->setRClass();
     }
+
+    public function testIfHaveImplementedTheInterfaces()
+    {
+        $interfaces = $this->rClass->getInterfaces();
+        $this->assertArrayHasKey('Testes\JogoTetris\Interfaces\iJogador', $interfaces);
+    }
+
+    public function testIfHaveExtendsAbsColleague()
+    {
+        $this->assertTrue($this->rClass->isSubclassOf('Testes\JogoTetris\Mediator\AbsColleague'));
+    }
+
+    
 }

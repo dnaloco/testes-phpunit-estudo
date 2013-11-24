@@ -7,10 +7,16 @@ class AbsMediatorTest extends \PHPUnit_Framework_TestCase
 
     private $rClass;
 
-    public function __construct()
+    public function setUp()
     {
-        parent::__construct();
         $this->setRClass();
+    }
+
+    public function testIfHasConstsIdPecaIdJogadorIdTela()
+    {
+        $this->assertTrue($this->rClass->hasConstant('ID_PECA'));
+        $this->assertTrue($this->rClass->hasConstant('ID_JOGADOR'));
+        $this->assertTrue($this->rClass->hasConstant('ID_TELA'));
     }
 
     public function testIfClassHasPropertyColleaguesAndIsStaticPrivateAndAnArray()
@@ -83,6 +89,24 @@ class AbsMediatorTest extends \PHPUnit_Framework_TestCase
     public function testIfHasMethodSend()
     {
         $this->assertTrue($this->rClass->hasMethod('send'));
+    }
+
+    public function testIfSendHasTwoRequiredParameters()
+    {
+        $method = $this->setRMethod('send');
+        $this->assertEquals(2, $method->getNumberOfRequiredParameters());
+    }
+
+    public function testIfSendHasTheFirstParameterAsAnArray()
+    {
+        $paramArray = $this->setRParam('send', 'data');
+        $this->assertTrue($paramArray->isArray());
+    }
+
+    public function testIfSendHasTheSecondParameterAsATypeOfAbsColleague()
+    {
+        $param = $this->setRParam('send', 'colleague');
+        $this->assertEquals($param->getClass()->getName(), __NAMESPACE__ . '\AbsColleague');
     }
 
     public function testIfSendIsAbstractAndPublic()

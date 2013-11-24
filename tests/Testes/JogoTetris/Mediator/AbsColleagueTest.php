@@ -7,9 +7,8 @@ class AbsColleagueTest extends \PHPUnit_Framework_TestCase
 
     private $rClass;
 
-    public function __construct()
+    public function setUp()
     {
-        parent::__construct();
         $this->setRClass();
     }
 
@@ -29,24 +28,21 @@ class AbsColleagueTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testIfHasNotifyMethod
      */
-    public function testIfNotifyIsAbstractAndProtected()
+    public function testIfNotifyIsProtected()
     {
         $method = $this->setRMethod('notify');
-        $this->assertTrue($method->isAbstract());
         $this->assertTrue($method->isprotected());
     }
 
     /**
-     * @depends testIfNotifyIsAbstractAndProtected
+     * @depends testIfNotifyIsProtected
      */
-    public function testIfNotifyHasTwoRequiredArgumentsOneOfThemIsAnArrayAndTheOtherIsAnInstanceOfItself()
+    public function testIfNotifyHasTwoRequiredArgumentsOneOfThemIsAnArray()
     {
         $method = $this->setRMethod('notify');
-        $this->assertEquals(2, $method->getNumberOfRequiredParameters());
+        $this->assertEquals(1, $method->getNumberOfRequiredParameters());
         $paramArray = $this->setRParam('notify', 'data');
         $this->assertTrue($paramArray->isArray());
-        $paramItself = $this->setRParam('notify', 'self');
-        $this->assertEquals($paramItself->getClass()->getName(), __NAMESPACE__ . '\AbsColleague');
     }
 
     public function testIfHasMethodUpdate()
