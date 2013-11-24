@@ -12,6 +12,13 @@ class AbsColleagueTest extends \PHPUnit_Framework_TestCase
         $this->setRClass();
     }
 
+    public function testIfHasConstsIdPecaIdJogadorIdTela()
+    {
+        $this->assertTrue($this->rClass->hasConstant('ID_PECA'));
+        $this->assertTrue($this->rClass->hasConstant('ID_JOGADOR'));
+        $this->assertTrue($this->rClass->hasConstant('ID_TELA'));
+    }
+
     public function testIfConstructorMethodExpectsOneParamaterOfAbsMediatorType()
     {
         $method = $this->setRMethod('__construct');

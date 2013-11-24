@@ -8,7 +8,6 @@ final class Peca implements iPeca
     private static $imagem;
     private static $coords;
     private static $rotate = 0;
-    private static $level;
     private static $speed;
 
     public function __construct($imagem)
@@ -33,6 +32,13 @@ final class Peca implements iPeca
         );
     }
     
+    public function resetPeca()
+    {
+        $this->coords->resetCoords();
+        $this->rotate = 0;
+        $this->speed = -1;
+    }
+
     // quando o jogador apertar a seta 
     // para cima a imagem rotaciona em 
     // sentido horário. Mediator Jogo é o responsável

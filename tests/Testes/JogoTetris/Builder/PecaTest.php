@@ -23,7 +23,6 @@ class PecaTest extends \PHPUnit_Framework_TestCase
         $this->assertClassHasStaticAttribute('imagem', $this->rClass->getName());
         $this->assertClassHasStaticAttribute('coords', $this->rClass->getName());
         $this->assertClassHasStaticAttribute('rotate', $this->rClass->getName());
-        $this->assertClassHasStaticAttribute('level', $this->rClass->getName());
         $this->assertClassHasStaticAttribute('speed', $this->rClass->getName());
     }
 
@@ -89,8 +88,8 @@ class PecaTest extends \PHPUnit_Framework_TestCase
         $imgArr = $p->drawImage();
         $this->img_ptX_ptY_rotate_speed($imgArr, 1, 0, 0, -1);
 
-        // I'm gonna increase the speed and the 
-        // going one step down
+        // I'm gonna increase the speed and
+        // go one step down
         $p->setSpeed(-2);
         $p->stepDown();
         $imgArr = $p->drawImage();

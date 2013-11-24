@@ -7,30 +7,51 @@ use Testes\JogoTetris\Mediator\AbsColleague,
 
 final class Jogador extends AbsColleague implements iJogador
 {
+    private static $id = parent::ID_JOGADOR;
+
     public function __construct(AbsMediator $mediator)
     {
         parent::__construct($mediator);   
     }
 
-    public function sendCommand($command)
+    public function getId()
+    {
+        return self::$id;
+    }
+
+
+    public function sendCommand(Array $command)
     {
         $data = array();
-        switch($command)
+        switch($command['action'])
         {
-            case eCommands::RESET:
-            // Set Data keys
+            case 'reset':
+                $data['action'] = eCommands::RESET;
+                $data['msg'] = array(
+                    $command['reset']
+                ); // ... TO IMPLEMENTS
                 $this->notify($data);
                 break;
-            case eCommands::PAUSE:
-            // Set Data keys
+            case 'pause':
+                $data['action'] = eCommands::PAUSE;
+                $data['msg'] = array(
+                    $command['pause']
+                ); // ... TO IMPLEMENTS
                 $this->notify($data);
                 break;
-            case eCommands::START:
-            // Set Data keys
+            case 'start':
+                $data['action'] = eCommands::START;
+                $data['msg'] = array(
+                    $command['start']
+                ); // ... TO IMPLEMENTS
                 $this->notify($data);
                 break;
-            case eCommands::CHANGE:
-            // Set Data keys
+            case 'change':
+                $data['action'] = eCommands::CHANGE;
+                $data['msg'] = array(); // ... TO IMPLEMENTS
+                foreach($command['change'] $k=>$v) {
+                    array_push($data['msg'], array($k => $v));
+                }
                 $this->notify($data);
                 break;
         }

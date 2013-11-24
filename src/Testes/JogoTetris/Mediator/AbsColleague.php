@@ -3,12 +3,10 @@ namespace Testes\JogoTetris\Mediator;
 
 abstract class AbsColleague
 {
-    /*
-    Ações permitidas que os colleagues podem realizar.
-    Estas açoes iram com o array data enviado através do notify.
-    O array data tem duas chaves('action' e 'msg').
-     */
-
+    const ID_PECA       = 1; // 0001
+    const ID_JOGADOR    = 2; // 0010
+    const ID_TELA       = 4; // 0100
+                        // all =0111
     private $mediator;
     
     public function __construct(AbsMediator $mediator)
