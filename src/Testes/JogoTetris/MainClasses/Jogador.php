@@ -23,29 +23,36 @@ final class Jogador extends AbsColleague implements iJogador
 
     public function sendCommand(Array $command)
     {
+        if(!array_key_exists('action', $command))
+            throw new \InvalidArgumentException('Array data must have action key!');
+
         $data = array();
+
         switch($command['action'])
         {
             case eCommands::RESET:
-                $data['action'] = eCommands::RESET;
+                $data['action'] = $command['action'];
                 $data['msg'] = 'reset';
                 $this->notify($data);
                 break;
             case eCommands::PAUSE:
-                $data['action'] = eCommands::PAUSE;
-                $data['msg'] = 'pause';
+                $data['action'] = $command['action'];
+                $data['msg'] = null;
                 $this->notify($data);
                 break;
-            case eCommands::START:
-                $data['action'] = eCommands::START;
-                $data['msg'] = 'start';
+            case eCommands::FINISH:
+                $data['action'] = $command['action'];
+                $data['msg'] = 'finish';
                 $this->notify($data);
                 break;
             case eCommands::CHANGE:
-                $data['action'] = eCommands::CHANGE;
-                if(!array_key_exists('change', $command))
-                    throw new \InvalidArgumentException('Array data must have change key!');
-                $data['msg'] = $command['change'];
+                $data['action'] = $command['action'];
+                
+                if(!array_key_exists('direction', $command))
+                    throw new \InvalidArgumentException('Array data must have a [direction] key!');
+
+                $data['msg'] = $command['direction'];
+
                 $this->notify($data);
                 break;
         }

@@ -4,30 +4,74 @@ namespace Testes\JogoTetris;
 use Testes\JogoTetris\MainClasses\Jogador,
     Testes\JogoTetris\MainClasses\Jogo,
     Testes\JogoTetris\MainClasses\PecaFactory,
-    Testes\JogoTetris\MainClasses\Tela;
+    Testes\JogoTetris\MainClasses\Tela,
+    Testes\JogoTetris\Interfaces\eCommands;
 
 final class JogoFacade
 {
-    public function startGame()
+    private $jogo, $peca, $tela, $jogador;
+
+    public function iniciarJogo($newPlayer = 'Arthur')
     {
-        $jogo = new Jogo();
+        $this->jogo = new Jogo();
         
-        $jogador = new Jogador($jogo);
-        $jogador->setNome('Arthur');
+        $this->jogador = new Jogador($this->jogo);
+        $this->jogador->setNome($newPlayer);
 
-        $peca = new PecaFactory($jogo);
+        $this->peca = new PecaFactory($this->jogo);
 
-        $tela = new Tela($jogo);
+        $this->tela = new Tela($this->jogo);
 
-        $jogo->addColleague($jogador)
-            ->addColleague($peca)
-            ->addColleague($tela);
+        $this->jogo->addColleague($this->jogador)
+            ->addColleague($this->peca)
+            ->addColleague($this->tela);
 
-        $peca->gerarPecas();
+        $this->peca->gerarPecas();
     }
 
-    public function resetGame()
+    public function pausarJogo()
     {
-
+        $this->jogador->sendCommand(array('action'=>eCommands::PAUSE));
     }
+
+    public function resetarScore()
+    {
+        $this->jogador->sendCommand(array('action'=>eCommands::RESET));
+    }
+
+    public function atualizarTela()
+    {
+        $this->tela->renderScreen();
+    }
+
+    public function terminarJogo()
+    {
+        $this->jogador->sendCommand(array('action' => eCommands::FINISH));
+    }
+
+    public function novoJogo($jogador)
+    {
+        $this->iniciarJogo($jogador);
+    }
+
+    public function descerPeca()
+    {
+        $this->jogador->sendCommand(
+            array(
+                'action' => eCommands::CHANGE,
+                'direction' => 0
+            )
+        );
+    }
+
+    public function moverPeca($direction)
+    {
+        $this->jogador->sendCommand(
+            array(
+                'action' => eCommands::CHANGE,
+                'direction' => $direction
+            )
+        );
+    }
+
 }

@@ -1,7 +1,7 @@
 <?php 
 namespace Testes\JogoTetris;
 
-class JogoFacadetest extends \PHPUnit_Framework_TestCase
+class JogoFacadeTest extends \PHPUnit_Framework_TestCase
 {
     use \Testes\TraitTestes\tTestFinal;
 
@@ -12,9 +12,56 @@ class JogoFacadetest extends \PHPUnit_Framework_TestCase
         $this->setRClass();
     }
 
-    public function testStartMethod()
+    public function testJogoFacadeMethod()
     {
         $jf = new JogoFacade();
-        $jf->startGame();
+        $jf->iniciarJogo();
+        $jf->atualizarTela();
+        $jf->moverPeca(2);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(2);
+        $jf->atualizarTela();
+        $jf->moverPeca(2);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(1);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(3);
+        $jf->atualizarTela();
+        $jf->moverPeca(14);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(14);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(8);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(8);
+        $jf->atualizarTela();
+        $jf->moverPeca(8);
+        $jf->atualizarTela();
+        $jf->moverPeca(6);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(1);
+        $jf->atualizarTela();
+        $jf->moverPeca(1);
+        $jf->atualizarTela();
+        $jf->descerPeca();
+        $jf->atualizarTela();
+        $jf->moverPeca(1);
+        $jf->atualizarTela();
+
+        /*---------------------------*/
     }
 }

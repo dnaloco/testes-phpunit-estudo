@@ -8,15 +8,33 @@ use Testes\JogoTetris\Mediator\AbsMediator,
 
 final class Jogo extends AbsMediator implements iJogo
 {
+    private $pause = false;
+    private $status = false;
+
+    public function _pauseGame()
+    {
+        if($this->pause)
+            $this->pause = false;
+        else
+            $this->pause = true;
+    }
+
+    public function _startGame()
+    {
+        $this->status = true;
+    }
+
+    public function _finishGame()
+    {
+        $this->status = false;
+    }
+
     public function send(Array $data, AbsColleague $colleague)
     {
-        // THROW AN EXCEPTION HERE IF ACTION KEY WAS NOT SETTED...
-        if(!array_key_exists('action', $data))
-            throw new \InvalidArgumentException('Array data must have action key!');
-        $action = $data['action'];
-
-        switch($action) {
+        switch($data['action']) {
             case eCommands::PAUSE:
+                $this->_pauseGame();
+                $data['msg'] = $this->pause;
                 foreach($this->colleagues as $c) {
                     if($c->getId()&AbsColleague::ID_TELA) {
                         $c->update($data);
@@ -24,6 +42,10 @@ final class Jogo extends AbsMediator implements iJogo
                 }
                 break;
             case eCommands::RESET:
+                if($status){
+                    print "Não é possível resetar o score com o jogo em andamento!";
+                    return false;
+                }
                 foreach($this->colleagues as $c) {
                     if($c !==  $colleague) {
                         $c->update($data);
@@ -31,6 +53,10 @@ final class Jogo extends AbsMediator implements iJogo
                 }
                 break;
             case eCommands::FINISH:
+                if(!$status) {
+                    print "O jogo já está finalizado!";
+                    return false;
+                }
                 foreach($this->colleagues as $c) {
                     if($c !==  $colleague) {
                         $c->update($data);
@@ -38,6 +64,10 @@ final class Jogo extends AbsMediator implements iJogo
                 }
                 break;
             case eCommands::START:
+                if($status){
+                    print "O jogo já foi iniciado!";
+                    return false;
+                }
                 foreach($this->colleagues as $c) {
                     if($c !==  $colleague) {
                         $c->update($data);
@@ -45,6 +75,10 @@ final class Jogo extends AbsMediator implements iJogo
                 }
                 break;
             case eCommands::CHANGE:
+                if($this->pause) {
+                    print "O jogo está pausado";
+                    return false;
+                }
                 foreach($this->colleagues as $c) {
                     if($colleague->getId()&AbsColleague::ID_PECA && $c->getId()&AbsColleague::ID_TELA) {
                         print "\npeca to tela\n";

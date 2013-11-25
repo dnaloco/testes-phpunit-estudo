@@ -18,16 +18,16 @@ class PecaTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('Testes\JogoTetris\Interfaces\iPeca', $interfaces);
     }
 
-    public function testIfClassHasABunchOfStaticAttributes()
+    public function testIfClassHasABunchOfAttributes()
     {
-        $this->assertClassHasStaticAttribute('imagem', $this->rClass->getName());
-        $this->assertClassHasStaticAttribute('coords', $this->rClass->getName());
-        $this->assertClassHasStaticAttribute('rotate', $this->rClass->getName());
-        $this->assertClassHasStaticAttribute('speed', $this->rClass->getName());
+        $this->assertClassHasAttribute('imagem', $this->rClass->getName());
+        $this->assertClassHasAttribute('coords', $this->rClass->getName());
+        $this->assertClassHasAttribute('rotate', $this->rClass->getName());
+        $this->assertClassHasAttribute('speed', $this->rClass->getName());
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      * @expectedException InvalidArgumentException   
      */
     public function testIfWhenITryToConstructAPecaWithAWrongImageItTrowsAnInvalidArgumentException()
@@ -36,7 +36,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      */
     public function testIfWhenPassAExistingFileImageItConstructCorrectly()
     {
@@ -45,7 +45,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      */
     public function testIfIGetAnArrayWithInfoOfImagemAndCoords()
     {
@@ -59,7 +59,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      */
     public function testIfWhenISetSomeCoordsIGetTheRightValueOfThen()
     {
@@ -72,7 +72,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      */
     public function testFlowOfPeca()
     {
@@ -135,7 +135,7 @@ class PecaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testIfClassHasABunchOfStaticAttributes
+     * @depends testIfClassHasABunchOfAttributes
      */
     public function img_ptX_ptY_rotate_speed($imgArr, $x, $y, $r, $s)
     {

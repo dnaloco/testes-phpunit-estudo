@@ -5,38 +5,43 @@ use Testes\JogoTetris\Interfaces\iPeca;
 
 final class Peca implements iPeca
 {
-    private static $imagem;
-    private static $coords;
-    private static $rotate = 0;
-    private static $speed;
+    private $imagem;
+    private $coords;
+    private $rotate = 0;
+    private $speed;
+
+    const CMD_UP    = 1;
+    const CMD_RIGHT = 2;
+    const CMD_DOWN  = 4;
+    const CMD_LEFT  = 8;
 
     public function __construct($imagem)
     {
-        self::$imagem = new Imagem($imagem);
+        $this->imagem = new Imagem($imagem);
 
-        if(!file_exists(self::$imagem->imagem))
-            throw new \InvalidArgumentException(self::$imagem->imagem);
+        if(!file_exists($this->imagem->getPathImg()))
+            throw new \InvalidArgumentException($this->imagem->getPathImg());
         
-        self::$coords = new Coords();
+        $this->coords = new Coords();
     }
 
     // renderiza a imagem
     public function drawImage()
     {
         return array(   
-            'img'   => self::$imagem->imagem,
-            'ptX'   => self::$coords->ptX,
-            'ptY'   => self::$coords->ptY,
-            'rotate'=> self::$rotate,
-            'speed' => self::$speed
+            'img'   => $this->imagem->getPathImg(),
+            'ptX'   => $this->coords->ptX,
+            'ptY'   => $this->coords->ptY,
+            'rotate'=> $this->rotate,
+            'speed' => $this->speed
         );
     }
     
     public function resetPeca()
     {
-        self::$coords->resetCoords();
-        self::$rotate = 0;
-        self::$speed = -1;
+        $this->coords->resetCoords();
+        $this->rotate = 0;
+        $this->speed = -1;
     }
 
     // quando o jogador apertar a seta 
@@ -44,30 +49,30 @@ final class Peca implements iPeca
     // sentido horário. Mediator Jogo é o responsável
     public function setRotate()
     {
-        if(self::$rotate < 3)
-            ++self::$rotate;
+        if($this->rotate < 3)
+            ++$this->rotate;
         else 
-            self::$rotate = 0;
+            $this->rotate = 0;
     }
 
     // quando o apertar direita ou esquerda. 
     // Mediator Jogo é o responsável
     public function setMove($ptX)
     {
-        self::$coords->setCoords($ptX);
+        $this->coords->setCoords($ptX);
     }
 
     // quando apertar para baixo aumente a velocidade. 
     // Mediator Jogo é o responsável
     public function setSpeed($speed = -1)
     {
-        self::$speed = $speed;
+        $this->speed = $speed;
     }
     
     // Os comandos são de responsabilidade do Jogo Mediator.
     public function stepDown()
     {
-        self::$coords->setCoords(0, self::$speed);
+        $this->coords->setCoords(0, $this->speed);
     }
 
 }

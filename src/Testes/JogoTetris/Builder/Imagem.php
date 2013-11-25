@@ -3,7 +3,9 @@ namespace Testes\JogoTetris\Builder;
 
 final class Imagem
 {
-    public $imagem;
+    use \Testes\JogoTetris\MyTraitHelpers\tFileHelper;
+
+    private $imagem;
     public static $pathimgs = '/../public/images/';
     public static $defaultimg = 'default.jpg';
     public static $filePermExt = array(
@@ -30,7 +32,8 @@ final class Imagem
         }
     }
 
-    private function get_file_extension($file_name) {
-        return substr(strrchr($file_name,'.'),1);
+    public function getPathImg()
+    {
+        return $this->imagem;
     }
 }
