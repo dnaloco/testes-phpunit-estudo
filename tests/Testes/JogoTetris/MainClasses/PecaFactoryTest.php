@@ -62,9 +62,21 @@ class PecaFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertClassHasAttribute('pecaSeguinte', $this->rClass->getName());
     }
 
+    public function testIfHasSetPecaAtualMethod()
+    {
+        $this->assertTrue($this->rClass->hasMethod('setPecaAtual'));
+    }
+
+    public function testIfHasSetPecaSeguinteMethod()
+    {
+        $this->assertTrue($this->rClass->hasMethod('setPecaSeguinte'));
+    }
+
     /**
     * @depends testIfHasPecasFlyweightStaticProperty
     * @depends testIfHasPecaAtualAndPecaSeguinteAttributes
+    * @depends testIfHasSetPecaAtualMethod
+    * @depends testIfHasSetPecaSeguinteMethod
     */
     public function testIfConstructorHaveSettedSevenObjectsOfPecas()
     {

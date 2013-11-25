@@ -3,7 +3,7 @@ namespace Testes\JogoTetris\Mediator;
 
 abstract class AbsMediator
 {
-    private static $colleagues = array();
+    protected $colleagues = array();
 
     public function addColleague(AbsColleague $colleague)
     {

@@ -26,33 +26,26 @@ final class Jogador extends AbsColleague implements iJogador
         $data = array();
         switch($command['action'])
         {
-            case 'reset':
+            case eCommands::RESET:
                 $data['action'] = eCommands::RESET;
-                $data['msg'] = array(
-                    $command['reset']
-                ); // ... TO IMPLEMENTS
+                $data['msg'] = 'reset';
                 $this->notify($data);
                 break;
-            case 'pause':
+            case eCommands::PAUSE:
                 $data['action'] = eCommands::PAUSE;
-                $data['msg'] = array(
-                    $command['pause']
-                ); // ... TO IMPLEMENTS
+                $data['msg'] = 'pause';
                 $this->notify($data);
                 break;
-            case 'start':
+            case eCommands::START:
                 $data['action'] = eCommands::START;
-                $data['msg'] = array(
-                    $command['start']
-                ); // ... TO IMPLEMENTS
+                $data['msg'] = 'start';
                 $this->notify($data);
                 break;
-            case 'change':
+            case eCommands::CHANGE:
                 $data['action'] = eCommands::CHANGE;
-                $data['msg'] = array(); // ... TO IMPLEMENTS
-                foreach($command['change'] as $k=>$v) {
-                    array_push($data['msg'], array($k => $v));
-                }
+                if(!array_key_exists('change', $command))
+                    throw new \InvalidArgumentException('Array data must have change key!');
+                $data['msg'] = $command['change'];
                 $this->notify($data);
                 break;
         }
@@ -80,9 +73,9 @@ final class Jogador extends AbsColleague implements iJogador
         return $this->nome;
     }
 
-    protected function update(Array $data)
+    public function update(Array $data)
     {
-        // if data has key score setScore
-        // if data has key finish setScore
+        print "\nJOGADOR RECEBE\n";
+        var_dump($data);
     }
 }

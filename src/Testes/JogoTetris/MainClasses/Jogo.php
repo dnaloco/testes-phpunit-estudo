@@ -3,23 +3,22 @@ namespace Testes\JogoTetris\MainClasses;
 
 use Testes\JogoTetris\Mediator\AbsMediator,
     Testes\JogoTetris\Mediator\AbsColleague,
-    Testes\JogoTetris\Interfaces\iJogo;
+    Testes\JogoTetris\Interfaces\iJogo,
+    Testes\JogoTetris\Interfaces\eCommands;
 
 final class Jogo extends AbsMediator implements iJogo
 {
-    const JOGADOR   = 1;
-    const PECA      = 2;
-    const TELA      = 4;
-
     public function send(Array $data, AbsColleague $colleague)
     {
         // THROW AN EXCEPTION HERE IF ACTION KEY WAS NOT SETTED...
+        if(!array_key_exists('action', $data))
+            throw new \InvalidArgumentException('Array data must have action key!');
         $action = $data['action'];
 
         switch($action) {
             case eCommands::PAUSE:
                 foreach($this->colleagues as $c) {
-                    if($c->getId()&4) {
+                    if($c->getId()&AbsColleague::ID_TELA) {
                         $c->update($data);
                     }
                 }
@@ -46,12 +45,17 @@ final class Jogo extends AbsMediator implements iJogo
                 }
                 break;
             case eCommands::CHANGE:
-                if($colleague->getId()&1 && $c->getId()&2) {
-                    $c->update($data);
-                } else if($colleague->getId()&2 && $c->getId()&4) {
-                    $c->update($data);
-                } else if($c->getId()^4) {
-                    $c->update($data);
+                foreach($this->colleagues as $c) {
+                    if($colleague->getId()&AbsColleague::ID_PECA && $c->getId()&AbsColleague::ID_TELA) {
+                        print "\npeca to tela\n";
+                        $c->update($data);
+                    } else if($colleague->getId()&AbsColleague::ID_JOGADOR && $c->getId()&AbsColleague::ID_PECA) {
+                        print "\njogador to peca\n";
+                        $c->update($data);
+                    } else if($colleague->getId()&AbsColleague::ID_TELA && $c->getId()&3) {
+                        print "\ntela to everybody\n";
+                        $c->update($data);
+                    }
                 }
                 break;
         }

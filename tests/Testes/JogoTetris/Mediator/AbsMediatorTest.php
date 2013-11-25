@@ -12,14 +12,16 @@ class AbsMediatorTest extends \PHPUnit_Framework_TestCase
         $this->setRClass();
     }
 
-    public function testIfClassHasPropertyColleaguesAndIsStaticPrivateAndAnArray()
+    public function testIfClassHasPropertyColleaguesAndIsProtectedAndAnArray()
     {
         $prop = 'colleagues';
         $this->assertThat($this->rClass->getName(), $this->classHasAttribute($prop));
         $prop = $this->rClass->getProperty($prop);
-        $this->assertTrue($prop->isPrivate());
-        $this->assertTrue($prop->isStatic());
-        $this->assertTrue(is_array($this->rClass->getStaticProperties()[$prop->getName()]));
+        $this->assertTrue($prop->isProtected());
+        $pC = $this->setRProp('colleagues');
+        $pC->setAccessible(true);
+        $abs = $this->getMockForAbstractClass('\Testes\JogoTetris\Mediator\AbsMediator');
+        $this->assertTrue(is_array($pC->getValue($abs)));
     }   
 
     public function testIfHasAddColleagueMethod()
@@ -57,7 +59,7 @@ class AbsMediatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testIfAddColleagueIsNotAbstractAndIsPublic
-     * @depends testIfClassHasPropertyColleaguesAndIsStaticPrivateAndAnArray
+     * @depends testIfClassHasPropertyColleaguesAndIsProtectedAndAnArray
      * @depends testIfAddColleagueHasHisFirstParamOfAbsCollegue
      */
     public function testIfAddColleagueInsertFiveElementsIntoPropertyColleagues()

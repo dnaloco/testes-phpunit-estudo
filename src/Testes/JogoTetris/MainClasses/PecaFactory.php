@@ -3,7 +3,8 @@ namespace Testes\JogoTetris\MainClasses;
 
 use Testes\JogoTetris\Mediator\AbsColleague,
     Testes\JogoTetris\Mediator\AbsMediator,
-    Testes\JogoTetris\Builder\Peca;
+    Testes\JogoTetris\Builder\Peca,
+    Testes\JogoTetris\Interfaces\eCommands;
 /*
 Esta classe usa o padrão Flyweight.
  */
@@ -35,7 +36,7 @@ final class PecaFactory extends AbsColleague
             array_push(self::$pecasFlyweight, new Peca($img));
         }
 
-        $rand = mt_rand(0, count(self::$pecasFlyweight));
+        $rand = mt_rand(0, count(self::$pecasFlyweight)-1);
 
         $this->setPecaSeguinte(self::$pecasFlyweight[$rand]);
     }
@@ -47,10 +48,18 @@ final class PecaFactory extends AbsColleague
 
     public function gerarPecas()
     {
-        $rand = mt_rand(0, count(self::$pecasFlyweight));
+        $rand = mt_rand(0, count(self::$pecasFlyweight)-1);
         $this->setPecaAtual($this->pecaSeguinte);
         $this->setPecaSeguinte(self::$pecasFlyweight[$rand]);
-        // TODO - NOTIFY
+
+        $data = array(
+            'action' => eCommands::CHANGE,
+            'change' => array(
+                'pecaAtual' => $this->pecaAtual,
+                'pecaSeguinte' => $this->pecaSeguinte
+            )
+        );
+        $this->notify($data);
     }
 
     public function setPecaAtual(Peca $peca)
@@ -65,8 +74,9 @@ final class PecaFactory extends AbsColleague
         $this->pecaSeguinte = $peca;
     }
 
-    protected function update(Array $data)
+    public function update(Array $data)
     {
-        // TODO
+        print "\nPECA FACTORY RECEBE\n";
+        var_dump($data);
     }
 }

@@ -11,4 +11,10 @@ class JogoFacadetest extends \PHPUnit_Framework_TestCase
     {
         $this->setRClass();
     }
+
+    public function testStartMethod()
+    {
+        $jf = new JogoFacade();
+        $jf->startGame();
+    }
 }

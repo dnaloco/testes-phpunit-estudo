@@ -2,7 +2,9 @@
 namespace Testes\JogoTetris\MainClasses;
 
 use Testes\JogoTetris\Mediator\AbsColleague,
-    Testes\JogoTetris\Interfaces\iTela;
+    Testes\JogoTetris\Mediator\AbsMediator,
+    Testes\JogoTetris\Interfaces\iTela,
+    Testes\JogoTetris\Interfaces\eCommands;
 
 final class Tela extends AbsColleague implements iTela
 {
@@ -18,8 +20,24 @@ final class Tela extends AbsColleague implements iTela
         return self::$id;
     }
 
-    protected function update(Array $data)
+    public function finishGame()
     {
 
+    }
+
+    public function makePoints()
+    {
+
+    }
+
+    public function renderizeScreen()
+    {
+
+    }
+
+    public function update(Array $data)
+    {
+        print "\nTELA RECEBE\n";
+        var_dump($data);
     }
 }

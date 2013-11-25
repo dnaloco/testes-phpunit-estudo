@@ -18,5 +18,5 @@ abstract class AbsColleague
     {
         $this->mediator->send($data, $this);
     }
-    abstract protected function update(Array $data);
+    abstract public function update(Array $data);
 }
